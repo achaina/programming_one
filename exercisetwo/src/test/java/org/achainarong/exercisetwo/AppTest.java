@@ -2,6 +2,7 @@ package org.achainarong.exercisetwo;
 
 import static org.junit.Assert.assertTrue;
 
+import org.achainarong.exercisetwo.helper.HexcodeConverter;
 import org.junit.Test;
 
 public class AppTest 
@@ -12,8 +13,8 @@ public class AppTest
     {
         String givenValues = "48 65 122";
         String expectedResult = "30 41 7a";
-        String actualResult = App.ConvertStringToHex(givenValues);
-        
+        String actualResult = HexcodeConverter.ConvertStringToHex(givenValues);
+
         assertTrue(expectedResult.equals(actualResult));
     }
 }
