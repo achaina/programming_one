@@ -4,17 +4,16 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
-/**
- * Unit test for simple App.
- */
 public class AppTest 
 {
-    /**
-     * Rigorous Test :-)
-     */
+
     @Test
-    public void shouldAnswerWithTrue()
+    public void shouldReturnTheRightString()
     {
-        assertTrue( true );
+        String givenValues = "48 65 122";
+        String expectedResult = "30 41 7a";
+        String actualResult = App.ConvertStringToHex(givenValues);
+        
+        assertTrue(expectedResult.equals(actualResult));
     }
 }
