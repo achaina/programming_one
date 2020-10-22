@@ -13,7 +13,7 @@ public class  HexcodeConverter{
             
             String unicodeStringBuilder = UnicodeConverter.ConvertIntToUnicodeStringValue(splittedInt);
 
-            strBuilder.append(splittedInt + " " + HexcodeConverter.FromInt(splittedInt) + " " +  unicodeStringBuilder + " ");
+            strBuilder.append(splittedInt + " " + HexcodeConverter.FromInt(splittedInt) + " " +  unicodeStringBuilder + System.lineSeparator());
         }
 
         return strBuilder.toString().trim();
