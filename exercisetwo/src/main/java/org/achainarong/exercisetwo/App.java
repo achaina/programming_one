@@ -1,5 +1,6 @@
 package org.achainarong.exercisetwo;
 
+import org.achainarong.exercisetwo.exercise.MathExercise;
 import org.achainarong.exercisetwo.helper.*;
 
 public class App {
@@ -15,11 +16,16 @@ public class App {
         System.out.println(unicodeString);
 
         // converting string to unicode representation
-        String hello = "Hello";
+        String hello = "hello";
         String unicodeHello = UnicodeConverter.ConvertStringToUnicodeStringValue(hello);
 
         System.out.println(System.lineSeparator() + "Converting string \"Hello\" to unicode:" + System.lineSeparator());
         System.out.println(unicodeHello + System.lineSeparator());
 
+        // Mathexercise
+        MathExercise mathExercise = new MathExercise();
+        mathExercise.RunEverything();
+
     }
+
 }
