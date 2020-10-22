@@ -17,4 +17,17 @@ public class UnicodeConverter {
 
         return unicodeStringBuilder.toString();
     }
+
+    public static String ConvertStringToUnicodeStringValue(String stringToConvert) {
+        char[] charArray = stringToConvert.toCharArray();
+
+        StringBuilder unicodeStringBuilder = new StringBuilder();
+
+        for (char ch : charArray) {
+            int unicodeInt = (int) ch;
+            unicodeStringBuilder.append(String.format("\\u%x", unicodeInt));
+        }
+
+        return unicodeStringBuilder.toString();
+    }
 }
