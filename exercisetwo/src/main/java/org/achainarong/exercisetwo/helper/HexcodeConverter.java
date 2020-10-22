@@ -10,11 +10,13 @@ public class  HexcodeConverter{
         StringBuilder strBuilder = new StringBuilder();
 
         for (int splittedInt : splittedIntArray) {
-            String unicodeString = HexcodeConverter.FromInt(splittedInt);
-            strBuilder.append(unicodeString + " ");
+            
+            String unicodeStringBuilder = UnicodeConverter.ConvertIntToUnicodeStringValue(splittedInt);
+
+            strBuilder.append(splittedInt + " " + HexcodeConverter.FromInt(splittedInt) + " " +  unicodeStringBuilder + " ");
         }
 
-        return UnicodeConverter.ConvertStringToUnicode(strBuilder.toString().trim());
+        return strBuilder.toString().trim();
     }
 
 	private static String FromInt(int number) {

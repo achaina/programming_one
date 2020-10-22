@@ -1,14 +1,19 @@
 package org.achainarong.exercisetwo.helper;
 
-import java.nio.charset.*;
-
 public class UnicodeConverter {
-    public static String ConvertStringToUnicode(String str){
-        // converting the string into a bytearray so a new string with the right encoding can be initiliated
-        // Depending on the JVM which decides the default encoding of strings this conversion could lead to problems
-        // macOS should have UTF-8 as default encoding so it should be fine and this conversion should not actually be needed
-        byte[] byteArray = str.getBytes();
+    public static String ConvertIntToUnicodeStringValue(int number){
+        
+        // macOS default encoding is UTF-8 so it should be fine
+        // if the default encoding is something else there could be a conversion into a wrong value
+        char[] charArray = Integer.toString(number).toCharArray();
 
-        return new String(byteArray, StandardCharsets.UTF_8);
+            StringBuilder unicodeStringBuilder = new StringBuilder();
+
+            for (char ch : charArray) {
+                int unicodeInt = (int) ch;
+                unicodeStringBuilder.append(String.format("\\u%x", unicodeInt));
+            }
+
+            return unicodeStringBuilder.toString();
     }
 }

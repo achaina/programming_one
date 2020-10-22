@@ -8,7 +8,7 @@ public class App
     {
         String stringToConvertToHex = "48 65 122";
         String unicodeString = HexcodeConverter.ConvertStringToHex(stringToConvertToHex);
-        // printing out the hex values
+    
         System.out.println("Hexstring: " + unicodeString);
     }
 }
