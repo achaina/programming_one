@@ -12,7 +12,7 @@ public class UnicodeConverter {
 
         for (char ch : charArray) {
             int unicodeInt = (int) ch;
-            unicodeStringBuilder.append(String.format("\\u%x", unicodeInt));
+            unicodeStringBuilder.append(String.format("\\u%04x", unicodeInt));
         }
 
         return unicodeStringBuilder.toString();
@@ -25,7 +25,7 @@ public class UnicodeConverter {
 
         for (char ch : charArray) {
             int unicodeInt = (int) ch;
-            unicodeStringBuilder.append(String.format("\\u%x", unicodeInt));
+            unicodeStringBuilder.append(String.format("\\u%04x", unicodeInt));
         }
 
         return unicodeStringBuilder.toString();

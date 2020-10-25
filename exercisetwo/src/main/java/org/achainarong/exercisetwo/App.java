@@ -25,7 +25,6 @@ public class App {
         // Mathexercise
         MathExercise mathExercise = new MathExercise();
         mathExercise.RunEverything();
-
     }
 
 }

@@ -10,7 +10,7 @@ public class AppTest {
     @Test
     public void shouldReturnTheRightString() {
         String givenValues = "48 65 122";
-        String expectedResult = "48 30 \\u34\\u38";
+        String expectedResult = "122 7a \\u0031\\u0032\\u0032";
         String actualResult = HexcodeConverter.ConvertStringToHex(givenValues);
 
         assertTrue(actualResult.contains(expectedResult));
