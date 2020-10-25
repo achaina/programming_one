@@ -12,6 +12,11 @@ public class UnicodeConverter {
 
         for (char ch : charArray) {
             int unicodeInt = (int) ch;
+
+            // https://docs.oracle.com/javase/7/docs/api/java/util/Formatter.html
+            // this is the pattern the string formatter uses
+            // %[argument_index$][flags][width][.precision]conversion 
+            // %x04x stands for a 4 digit hexadecimal number with trailing zeroes
             unicodeStringBuilder.append(String.format("\\u%04x", unicodeInt));
         }
 
