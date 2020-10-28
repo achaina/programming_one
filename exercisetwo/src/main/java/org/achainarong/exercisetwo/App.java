@@ -6,6 +6,7 @@ import org.achainarong.exercisetwo.helper.*;
 public class App {
     public static void main(String[] args) {
         // converting numbers to hex and their unicode representation
+        // hex would be 30, 41, 7a
         String stringToConvertToHex = "48 65 122";
         String unicodeString = HexcodeConverter.ConvertStringToHex(stringToConvertToHex);
 
