@@ -60,7 +60,22 @@ public class BoolOperatorExercise {
         System.out.println(op1 + "  | " + (op1 ^ op2) + " | " + (op1 ^ !op2));
     }
 
-    public static void BitwiseOrOperator() {
+    public static void BitwiseOrOperatorTable() {
+
+        boolean op1 = false;
+        boolean op2 = false;
+
+        System.out.println(" |   | " + op2 + " | " + !op2);
+        System.out.println("------|-------|------");
+
+        System.out.println(op1 + " | " + (op1 | op2) + " | " + (op1 | !op2));
+
+        op1 = !op1;
+
+        System.out.println(op1 + "  | " + (op1 | op2) + " | " + (op1 | !op2));
+    }
+
+    public static void BitwiseOrOperatorNumbers() {
 
         // 0110
         int a = 6;
@@ -79,7 +94,22 @@ public class BoolOperatorExercise {
         System.out.println("Bitwise or operator 6 + 4 = " + result);
     }
 
-    public static void BitwiseAndOperator() {
+    public static void BitwiseAndOperatorTable() {
+
+        boolean op1 = false;
+        boolean op2 = false;
+
+        System.out.println(" &   | " + op2 + " | " + !op2);
+        System.out.println("------|-------|------");
+
+        System.out.println(op1 + " | " + (op1 & op2) + " | " + (op1 & !op2));
+
+        op1 = !op1;
+
+        System.out.println(op1 + "  | " + (op1 & op2) + " | " + (op1 & !op2));
+    }
+
+    public static void BitwiseAndOperatorNumbers() {
 
         // 0110
         int a = 6;

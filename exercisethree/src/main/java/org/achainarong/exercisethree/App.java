@@ -8,30 +8,38 @@ public class App {
     public static void main(String[] args) throws IOException {
 
         // Aufgabe 3a
-        // System.out.println(System.lineSeparator());
-        // BoolOperatorExercise.AnalyseMeMethod();
+        System.out.println(System.lineSeparator());
+        BoolOperatorExercise.AnalyseMeMethod();
 
-        // System.out.println(System.lineSeparator());
-        // BoolOperatorExercise.OrOperator();
+        System.out.println(System.lineSeparator());
+        BoolOperatorExercise.OrOperator();
 
-        // System.out.println(System.lineSeparator());
-        // BoolOperatorExercise.XorOperator();
+        System.out.println(System.lineSeparator());
+        BoolOperatorExercise.XorOperator();
 
-        // System.out.println(System.lineSeparator());
-        // BoolOperatorExercise.BitwiseOrOperator();
+        System.out.println(System.lineSeparator());
+        BoolOperatorExercise.BitwiseOrOperatorTable();
 
-        // System.out.println(System.lineSeparator());
-        // BoolOperatorExercise.BitwiseAndOperator();
+        System.out.println(System.lineSeparator());
+        BoolOperatorExercise.BitwiseAndOperatorTable();
+
+        System.out.println(System.lineSeparator());
+        BoolOperatorExercise.BitwiseOrOperatorNumbers();
+
+        System.out.println(System.lineSeparator());
+        BoolOperatorExercise.BitwiseAndOperatorNumbers();
 
         // Aufgabe 3b
 
-        try {
+        // BoolOperatorExercise.ReadBoolOperator();
 
-            int result = EBNF.AnalyzeFormAndReturnCalculation();
-            System.out.println(result);
-        } catch (IllegalArgumentException e) {
-            System.err.println(e.getMessage());
-        }
+        // try {
+
+        // int result = EBNF.AnalyzeFormAndReturnCalculation();
+        // System.out.println(result);
+        // } catch (IllegalArgumentException e) {
+        // System.err.println(e.getMessage());
+        // }
     }
 
 }
