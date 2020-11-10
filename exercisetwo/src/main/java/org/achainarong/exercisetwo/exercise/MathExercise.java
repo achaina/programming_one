@@ -1,77 +1,83 @@
 package org.achainarong.exercisetwo.exercise;
 
+import java.lang.*;
+
 public class MathExercise {
 
     // Could be more generic and less verbose when using reflection, but for this
     // exercise this should be enough
     public void RunEverything() {
+
+        System.out.println("square: " + Math.sqrt(-1));
+
         // 1.
         try {
             int result = this.DivideOddIntNumberBy2();
-            System.out.println("DivideOddNumberBy2: " + result);
+            System.out.println("DivideOddNumberBy2: \t\t\t" + result);
         } catch (Exception e) {
-            System.err.println("DivideOddNumberBy2: " + e);
+            System.err.println("DivideOddNumberBy2: \t\t\t" + e);
         }
 
         try {
             float result = this.DivideOddFloatNumberBy2();
-            System.out.println("DivideOddFloatNumberBy2: " + result);
+            System.out.println("DivideOddFloatNumberBy2: \t\t" + result);
         } catch (Exception e) {
-            System.err.println("DivideOddFloatNumberBy2: " + e);
+            System.err.println("DivideOddFloatNumberBy2: \t\t" + e);
         }
 
         // 3.
         try {
             double result = this.MultiplicateBigDoubleNumbers();
-            System.out.println("MultiplicateBigDoubleNumbers: " + result);
+            System.out.println("MultiplicateBigDoubleNumbers: \t\t" + result);
         } catch (Exception e) {
-            System.err.println("MultiplicateBigDoubleNumbers: " + e);
+            System.err.println("MultiplicateBigDoubleNumbers: \t\t" + e);
         }
 
         try {
             long result = this.MultiplicateBigLongNumber();
-            System.out.println("MultiplicateBigLongNumber: " + result);
+            System.out.println("MultiplicateBigLongNumber: \t\t" + result);
         } catch (Exception e) {
-            System.err.println("MultiplicateBigLongNumber: " + e);
+            System.err.println("MultiplicateBigLongNumber: \t\t" + e);
         }
 
         // 4.
         try {
             int result = this.DividePositiveIntNumberWithZero();
-            System.out.println("DividePositiveIntNumberWithZero: " + result);
+            System.out.println("DividePositiveIntNumberWithZero: \t" + result);
         } catch (Exception e) {
-            System.err.println("DividePositiveIntNumberWithZero: " + e);
+            System.err.println("DividePositiveIntNumberWithZero: \t" + e);
         }
 
         try {
             float result = this.DividePositiveFloatNumberWithZero();
-            System.out.println("DividePositiveFloatNumberWithZero: " + result);
+            System.out.println("DividePositiveFloatNumberWithZero: \t" + result);
         } catch (Exception e) {
-            System.err.println("DividePositiveFloatNumberWithZero: " + e);
+            System.err.println("DividePositiveFloatNumberWithZero: \t" + e);
         }
 
         try {
             int result = this.DivideNegativeIntNumberWithZero();
-            System.out.println("DivideNegativeIntNumberWithZero: " + result);
+            System.out.println("DivideNegativeIntNumberWithZero: \t" + result);
         } catch (Exception e) {
-            System.err.println("DivideNegativeIntNumberWithZero: " + e);
+            System.err.println("DivideNegativeIntNumberWithZero: \t" + e);
         }
 
         try {
             float result = this.DivideNegativeFloatNumberWithZero();
-            System.out.println("DivideNegativeFloatNumberWithZero: " + result);
+            System.out.println("DivideNegativeFloatNumberWithZero: \t" + result);
         } catch (Exception e) {
-            System.err.println("DivideNegativeFloatNumberWithZero: " + e);
+            System.err.println("DivideNegativeFloatNumberWithZero: \t" + e);
         }
 
         // 5.
         try {
-            int result = this.DivideZeroByItself();
-            System.out.println("DivideZeroByItself: " + result);
+            double result = this.DivideZeroByItself();
+            System.out.println("DivideZeroByItself: \t\t\t" + result);
         } catch (Exception e) {
-            System.err.println("DivideZeroByItself: " + e);
+            System.err.println("DivideZeroByItself: \t\t\t" + e);
         }
 
+        System.out.println();
     }
 
     // 1. Exercise
@@ -123,17 +129,17 @@ public class MathExercise {
     }
 
     // 5. Exercise
-    public int DivideZeroByItself() {
-        return 0 / 0;
+    public double DivideZeroByItself() {
+        return 0.0 / 0.0;
     }
 }
 
 // Datentyptabelle
-// boolean	8 bit	true/false
-// byte	8 bit	-2^7 bis 2^7-1
-// short	16 bit	-2^15 bis 2^15-1
-// char	16 bit	0 bis 65535
-// int	32 bit	-231 bis 231-1
-// float	32 bit	+/-1,4E-45 bis +/-3,4E+38
-// long	64 bit	-2^63 bis 2^63-1
-// double	64 bit	+/-4,9E-324 bis +/-1,7E+308
+// boolean 8 bit true/false
+// byte 8 bit -2^7 bis 2^7-1
+// short 16 bit -2^15 bis 2^15-1
+// char 16 bit 0 bis 65535
+// int 32 bit -231 bis 231-1
+// float 32 bit +/-1,4E-45 bis +/-3,4E+38
+// long 64 bit -2^63 bis 2^63-1
+// double 64 bit +/-4,9E-324 bis +/-1,7E+308

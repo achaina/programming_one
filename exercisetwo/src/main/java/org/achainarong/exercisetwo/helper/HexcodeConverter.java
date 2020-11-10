@@ -13,9 +13,9 @@ public class HexcodeConverter {
 
         for (int splittedInt : splittedIntArray) {
 
-            String unicodeStringBuilder = UnicodeConverter.ConvertIntToUnicodeStringValue(splittedInt);
+            String unicodeString = UnicodeConverter.ConvertIntToUnicodeStringValue(splittedInt);
 
-            strBuilder.append(splittedInt + " " + HexcodeConverter.FromInt(splittedInt) + " " + unicodeStringBuilder
+            strBuilder.append(splittedInt + " " + HexcodeConverter.FromInt(splittedInt) + " " + unicodeString
                     + System.lineSeparator());
         }
 
