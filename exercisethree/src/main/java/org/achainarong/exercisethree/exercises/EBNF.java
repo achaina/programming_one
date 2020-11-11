@@ -1,5 +1,6 @@
 package org.achainarong.exercisethree.exercises;
 
+// Extendet Backus-Naur-Form
 public class EBNF {
 
     // this method should analyze if the input value is in the form of the following
@@ -10,14 +11,13 @@ public class EBNF {
     // Op1 = "+" | "-".
     // Op2 = "*" | "/".
     // Digit = "0"|"1"|"2"|"3"|"4"|"5"|"6"|"7"|"8"|"9".
-    public static int AnalyzeFormAndReturnCalculation() {
+    public static int AnalyzeFormAndReturnCalculation(String expression) {
 
-        String scannedLine = System.console().readLine("Enter your expression to evaluate: ").replaceAll("\s+", "");
-        char[] expressionCharArray = scannedLine.toCharArray();
+        char[] expressionCharArray = expression.toCharArray();
 
-        if (scannedLine.contains("(") && scannedLine.contains(")")) {
+        if (expression.contains("(") && expression.contains(")")) {
             return AnalyzeAndCalculateExpressionWithBrackets(expressionCharArray);
-        } else if (scannedLine.contains("(") || scannedLine.contains(")")) {
+        } else if (expression.contains("(") || expression.contains(")")) {
             throw new IllegalArgumentException("Opening or closing bracket is missing!");
         } else {
             return AnaylzeAndCalculateExpressionWithoutBracktes(expressionCharArray);
@@ -37,7 +37,7 @@ public class EBNF {
 
             return CalculateResult(expressionCharArray[0], expressionCharArray[2], expressionCharArray[1]);
         } else {
-            throw new IllegalArgumentException("The given expression must have a length of at least 3!");
+            throw new IllegalArgumentException("The given expression must have a length of 3 or 4!");
         }
     }
 

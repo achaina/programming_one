@@ -1,5 +1,11 @@
 package org.achainarong.exercisethree.exercises;
 
+import java.io.IOException;
+
+// Konjunktion = &&
+// Disjunktion = ||
+// Negattion = !
+// Xor (Exclusive OR) = ^ 
 public class BoolOperatorExercise {
     public static void AnalyseMeMethod() {
         // initialisierung von zwei variablen des Typs boolean mit Wert "false"
@@ -136,6 +142,9 @@ public class BoolOperatorExercise {
 
             char[] scannedCharArray = scannedLine.toCharArray();
 
+            // example with System.in.read()
+            // char[] scannedCharArray = SystemInReadExample();
+
             // just initializing this variable for verbose purpose
             char operator = scannedCharArray[1];
 
@@ -143,17 +152,13 @@ public class BoolOperatorExercise {
             boolean boolValueOfFirstOperand = ConvertBooleanCharToDatatypeBoolean(scannedCharArray[0]);
             boolean boolValueOfSecondOperand = ConvertBooleanCharToDatatypeBoolean(scannedCharArray[2]);
 
-            boolean result;
-
-            if (operator == '^') {
-                result = boolValueOfFirstOperand ^ boolValueOfSecondOperand;
-            } else if (operator == '|') {
-                result = boolValueOfFirstOperand || boolValueOfSecondOperand;
-            } else if (operator == '&') {
-                result = boolValueOfFirstOperand && boolValueOfSecondOperand;
-            } else {
-                throw new IllegalArgumentException("Operator " + operator + " is not permitted as an Argument!");
-            }
+            boolean result = switch (operator) {
+                case '^' -> boolValueOfFirstOperand ^ boolValueOfSecondOperand;
+                case '|' -> boolValueOfFirstOperand | boolValueOfSecondOperand;
+                case '&' -> boolValueOfFirstOperand & boolValueOfSecondOperand;
+                default -> throw new IllegalArgumentException(
+                        "Operator " + operator + " is not permitted as an Argument!");
+            };
 
             System.out.println("The result is: " + result);
         } catch (IllegalArgumentException e) {
@@ -161,6 +166,16 @@ public class BoolOperatorExercise {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    private static char[] SystemInReadExample() throws IOException {
+        char[] scannedCharacters = new char[3];
+
+        for (int i = 0; i < 3; i++) {
+            scannedCharacters[i] = (char) System.in.read();
+        }
+
+        return scannedCharacters;
     }
 
     private static boolean ConvertBooleanCharToDatatypeBoolean(char boolChar) {
