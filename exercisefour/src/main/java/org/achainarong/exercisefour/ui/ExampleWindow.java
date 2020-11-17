@@ -1,5 +1,6 @@
 package org.achainarong.exercisefour.ui;
 
+import org.achainarong.exercisefour.enums.FilterType;
 import org.achainarong.exercisefour.filter.*;
 import org.achainarong.exercisefour.helper.*;
 import java.awt.*;
@@ -13,8 +14,7 @@ public class ExampleWindow {
         Image srcImage2 = ResourceHelper.GetImageFromResourceFolderByName("fki_start.jpg");
         Image srcImage3 = ResourceHelper.GetImageFromResourceFolderByName("farbenkreis_b.gif");
 
-        ImageFilter colorfilter = new BlueFilter();
-
+        ImageFilter colorfilter = getimageFilterByFilterType(FilterType.Alpha);
         var toolkit = Toolkit.getDefaultToolkit();
 
         Image filteredImage1 = toolkit.createImage(new FilteredImageSource(srcImage1.getSource(), colorfilter));
@@ -35,5 +35,21 @@ public class ExampleWindow {
         frame.getContentPane().add(allImagesPanel);
         frame.setBounds(50, 50, 1000, 500);
         frame.setVisible(true);
+    }
+
+    private ImageFilter getimageFilterByFilterType(FilterType filterType) {
+        return switch (filterType) {
+            case Alpha -> new AlphaFilter();
+            case Blue -> new BlueFilter();
+            case DarkLight -> new DarkLightFilter();
+            case ExchangeRedWithBlue -> new ExchangeRedWithBlueFilter();
+            case Green -> new GreenFilter();
+            case GreyScale -> new GreyScaleFilter();
+            case LighterBlue -> new LighterBlueFilter();
+            case Monochrome -> new MonochromeFilter();
+            case Red -> new RedFilter();
+            default -> throw new IllegalArgumentException(
+                    "No Filter With this type: " + filterType.toString() + " found!");
+        };
     }
 }

@@ -2,21 +2,19 @@ package org.achainarong.exercisefour.filter;
 
 import java.awt.image.*;
 
+import org.achainarong.exercisefour.helper.ColorConverter;
+
 public class MonochromeFilter extends RGBImageFilter {
 
     public int filterRGB(int x, int y, int pixel) {
-        int r = (pixel & 0xFF0000) >> 16;
-        int g = (pixel & 0xFF00) >> 8;
-        int b = (pixel & 0xFF);
 
-        // usual greyscale
-        // int greyScale = (int) (0.3 * r + 0.59 * g + 0.11 * b);
-
-        // msdn greyscale
-        int msdnGreyScale = (int) (r * 0.3 + g * 0.59 + b * 0.11);
+        // 11111111_10000000_01111110_00000011 is the color given by the exercise
+        int r = 0b10000000;
+        int g = 0b01111110;
+        int b = 0b00000011;
 
         // put the pixels in place
-        int filteredPixel = (0x000000FF << 24) | (msdnGreyScale << 16) | (msdnGreyScale << 8) | msdnGreyScale;
+        var filteredPixel = ColorConverter.RGBPixelToInt(r, g, b);
 
         return filteredPixel;
     }
