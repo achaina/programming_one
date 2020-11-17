@@ -21,6 +21,7 @@ public class FilterHelper {
             case Invert -> new InvertFilter();
             case Part -> new PartFilter();
             case ImageNoise -> new ImageNoiseFilter();
+            case BlackWhite -> new BlackWhiteFilter();
             default -> throw new IllegalArgumentException(
                     "No Filter With this type: " + filterType.toString() + " found!");
         };

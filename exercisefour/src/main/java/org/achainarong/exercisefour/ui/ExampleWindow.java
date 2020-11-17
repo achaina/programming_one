@@ -16,7 +16,7 @@ public class ExampleWindow {
         Image srcImage2 = ResourceHelper.GetImageFromResourceFolderByName("fki_start.jpg");
         Image srcImage3 = ResourceHelper.GetImageFromResourceFolderByName("farbenkreis_b.gif");
 
-        var filterType = FilterType.Fading;
+        var filterType = FilterType.BlackWhite;
         ImageFilter colorfilter;
 
         Image filteredImage1;

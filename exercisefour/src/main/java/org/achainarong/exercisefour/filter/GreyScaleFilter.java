@@ -10,9 +10,6 @@ public class GreyScaleFilter extends RGBImageFilter {
         RGBColor rgb = new RGBColor();
         rgb.getRGBFromPixel(pixel);
 
-        // usual greyscale
-        // int greyScale = (int) (0.3 * r + 0.59 * g + 0.11 * b);
-
         // msdn greyscale
         int msdnGreyScale = (int) (rgb.getRed() * 0.3 + rgb.getGreen() * 0.59 + rgb.getBlue() * 0.11);
 
