@@ -13,7 +13,7 @@ public class ExampleWindow {
         Image srcImage2 = ResourceHelper.GetImageFromResourceFolderByName("fki_start.jpg");
         Image srcImage3 = ResourceHelper.GetImageFromResourceFolderByName("farbenkreis_b.gif");
 
-        ImageFilter colorfilter = new MonochromeFilter();
+        ImageFilter colorfilter = new BlueFilter();
 
         var toolkit = Toolkit.getDefaultToolkit();
 
