@@ -37,6 +37,14 @@
     </dependency>
   </dependencies>
   <build>
+  <!-- Costume resource folder -->
+    <!-- <resources>
+      <resource>
+        <filtering>false</filtering>
+        <directory>src/main/resources</directory>
+      </resource>
+    </resources> -->
+    <!-- end of declaration -->
     <plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
