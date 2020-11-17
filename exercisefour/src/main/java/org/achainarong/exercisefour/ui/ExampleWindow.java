@@ -5,21 +5,38 @@ import org.achainarong.exercisefour.filter.*;
 import org.achainarong.exercisefour.helper.*;
 import java.awt.*;
 import java.awt.image.*;
+import java.io.IOException;
+
 import javax.swing.*;
 
 public class ExampleWindow {
-    public ExampleWindow() {
+    public ExampleWindow() throws IOException {
 
         Image srcImage1 = ResourceHelper.GetImageFromResourceFolderByName("river.gif");
         Image srcImage2 = ResourceHelper.GetImageFromResourceFolderByName("fki_start.jpg");
         Image srcImage3 = ResourceHelper.GetImageFromResourceFolderByName("farbenkreis_b.gif");
 
-        ImageFilter colorfilter = getimageFilterByFilterType(FilterType.ImageNoise);
-        var toolkit = Toolkit.getDefaultToolkit();
+        var filterType = FilterType.Fading;
+        ImageFilter colorfilter;
 
-        Image filteredImage1 = toolkit.createImage(new FilteredImageSource(srcImage1.getSource(), colorfilter));
-        Image filteredImage2 = toolkit.createImage(new FilteredImageSource(srcImage2.getSource(), colorfilter));
-        Image filteredImage3 = toolkit.createImage(new FilteredImageSource(srcImage3.getSource(), colorfilter));
+        Image filteredImage1;
+        Image filteredImage2;
+        Image filteredImage3;
+
+        if (filterType != FilterType.Fading) {
+            colorfilter = FilterHelper.getimageFilterByFilterType(filterType);
+            var toolkit = Toolkit.getDefaultToolkit();
+
+            filteredImage1 = toolkit.createImage(new FilteredImageSource(srcImage1.getSource(), colorfilter));
+            filteredImage2 = toolkit.createImage(new FilteredImageSource(srcImage2.getSource(), colorfilter));
+            filteredImage3 = toolkit.createImage(new FilteredImageSource(srcImage3.getSource(), colorfilter));
+        } else {
+
+            filteredImage1 = getFadingFilterImageWithImageSizeByName(srcImage1, "river.gif");
+            filteredImage2 = getFadingFilterImageWithImageSizeByName(srcImage2, "fki_start.jpg");
+            filteredImage3 = getFadingFilterImageWithImageSizeByName(srcImage3, "farbenkreis_b.gif");
+
+        }
 
         JFrame frame = new JFrame("Images and pixelwise filtering");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -37,22 +54,9 @@ public class ExampleWindow {
         frame.setVisible(true);
     }
 
-    private ImageFilter getimageFilterByFilterType(FilterType filterType) {
-        return switch (filterType) {
-            case Alpha -> new AlphaFilter();
-            case Blue -> new BlueFilter();
-            case DarkLight -> new DarkLightFilter();
-            case ExchangeRedWithBlue -> new ExchangeRedWithBlueFilter();
-            case Green -> new GreenFilter();
-            case GreyScale -> new GreyScaleFilter();
-            case LighterBlue -> new LighterBlueFilter();
-            case Monochrome -> new MonochromeFilter();
-            case Red -> new RedFilter();
-            case Invert -> new InvertFilter();
-            case Part -> new PartFilter();
-            case ImageNoise -> new ImageNoiseFilter();
-            default -> throw new IllegalArgumentException(
-                    "No Filter With this type: " + filterType.toString() + " found!");
-        };
+    private Image getFadingFilterImageWithImageSizeByName(Image sourceImage, String imageName) throws IOException {
+        BufferedImage bufferedImage = ResourceHelper.GetFileFromResourceFolderByName(imageName);
+        var toolkit = Toolkit.getDefaultToolkit();
+        return toolkit.createImage(new FilteredImageSource(sourceImage.getSource(), new FadingFilter(bufferedImage)));
     }
 }

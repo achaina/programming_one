@@ -6,10 +6,10 @@ import org.achainarong.exercisefour.helper.*;
 public class InvertFilter extends RGBImageFilter {
 
     public int filterRGB(int x, int y, int pixel) {
-        RGB rgb = new RGB();
+        RGBColor rgb = new RGBColor();
         rgb.getRGBFromPixel(pixel);
         // the tilde is inverting the bits in the colors
-        int filteredPixel = ColorConverter.RGBPixelToInt(~rgb.getRed(), ~rgb.getGreen(), ~rgb.getBlue());
+        int filteredPixel = ColorConverter.rgbPixelToInt(~rgb.getRed(), ~rgb.getGreen(), ~rgb.getBlue());
 
         return filteredPixel;
     }

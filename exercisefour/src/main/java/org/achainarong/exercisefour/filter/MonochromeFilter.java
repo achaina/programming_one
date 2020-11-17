@@ -14,7 +14,7 @@ public class MonochromeFilter extends RGBImageFilter {
         int b = 0b00000011;
 
         // put the pixels in place
-        var filteredPixel = ColorConverter.RGBPixelToInt(r, g, b);
+        var filteredPixel = ColorConverter.rgbPixelToInt(r, g, b);
 
         return filteredPixel;
     }

@@ -6,7 +6,7 @@ import org.achainarong.exercisefour.helper.*;
 public class ImageNoiseFilter extends RGBImageFilter {
 
     public int filterRGB(int x, int y, int pixel) {
-        RGB rgb = new RGB();
+        RGBColor rgb = new RGBColor();
         rgb.getRGBFromPixel(pixel);
         int filteredPixel;
 
@@ -15,7 +15,7 @@ public class ImageNoiseFilter extends RGBImageFilter {
         } else if (x % 2 == 1 && y % 2 == 1) {
             filteredPixel = 0xFF000000;
         } else {
-            filteredPixel = ColorConverter.RGBPixelToInt(rgb.getRed(), rgb.getGreen(), rgb.getBlue());
+            filteredPixel = ColorConverter.rgbPixelToInt(rgb.getRed(), rgb.getGreen(), rgb.getBlue());
         }
 
         return filteredPixel;

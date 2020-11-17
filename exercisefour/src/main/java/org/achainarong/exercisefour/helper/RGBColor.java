@@ -1,6 +1,6 @@
 package org.achainarong.exercisefour.helper;
 
-public class RGB {
+public class RGBColor {
     private int red;
     private int green;
     private int blue;

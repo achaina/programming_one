@@ -1,4 +1,4 @@
-package org.achainarong.exercisefour.helper;
+package org.achainarong.exercisefour.ui;
 
 import java.awt.*;
 import javax.swing.*;

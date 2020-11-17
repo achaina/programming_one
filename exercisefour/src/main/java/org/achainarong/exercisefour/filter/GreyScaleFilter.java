@@ -7,7 +7,7 @@ import org.achainarong.exercisefour.helper.*;
 public class GreyScaleFilter extends RGBImageFilter {
 
     public int filterRGB(int x, int y, int pixel) {
-        RGB rgb = new RGB();
+        RGBColor rgb = new RGBColor();
         rgb.getRGBFromPixel(pixel);
 
         // usual greyscale
@@ -16,7 +16,7 @@ public class GreyScaleFilter extends RGBImageFilter {
         // msdn greyscale
         int msdnGreyScale = (int) (rgb.getRed() * 0.3 + rgb.getGreen() * 0.59 + rgb.getBlue() * 0.11);
 
-        int filteredPixel = ColorConverter.RGBPixelToInt(msdnGreyScale, msdnGreyScale, msdnGreyScale);
+        int filteredPixel = ColorConverter.rgbPixelToInt(msdnGreyScale, msdnGreyScale, msdnGreyScale);
 
         return filteredPixel;
     }
