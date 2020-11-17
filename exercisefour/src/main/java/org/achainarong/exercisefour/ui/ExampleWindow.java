@@ -14,7 +14,7 @@ public class ExampleWindow {
         Image srcImage2 = ResourceHelper.GetImageFromResourceFolderByName("fki_start.jpg");
         Image srcImage3 = ResourceHelper.GetImageFromResourceFolderByName("farbenkreis_b.gif");
 
-        ImageFilter colorfilter = getimageFilterByFilterType(FilterType.Alpha);
+        ImageFilter colorfilter = getimageFilterByFilterType(FilterType.ImageNoise);
         var toolkit = Toolkit.getDefaultToolkit();
 
         Image filteredImage1 = toolkit.createImage(new FilteredImageSource(srcImage1.getSource(), colorfilter));
@@ -48,6 +48,9 @@ public class ExampleWindow {
             case LighterBlue -> new LighterBlueFilter();
             case Monochrome -> new MonochromeFilter();
             case Red -> new RedFilter();
+            case Invert -> new InvertFilter();
+            case Part -> new PartFilter();
+            case ImageNoise -> new ImageNoiseFilter();
             default -> throw new IllegalArgumentException(
                     "No Filter With this type: " + filterType.toString() + " found!");
         };
