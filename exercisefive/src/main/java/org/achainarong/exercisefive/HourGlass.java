@@ -1,7 +1,7 @@
 package org.achainarong.exercisefive;
 
-public class Rhombus {
-    public static void printTriangleForLoop() {
+public class HourGlass {
+    public static void printBiggerToSmaller() {
 
         char fillChar = '+';
         char identChar = '\s';
@@ -9,8 +9,9 @@ public class Rhombus {
         int indentWidth = 0;
         int triangleBaseLength = 11;
         int fillWidth = triangleBaseLength;
+        int triangleHeight = 6;
 
-        for (int i = 0; i < triangleBaseLength; i++) {
+        for (int i = 0; i < triangleHeight; i++) {
 
             printIdentCharForLoop(identChar, indentWidth);
 
@@ -26,32 +27,29 @@ public class Rhombus {
         }
     }
 
-    public static void printTriangleWhileLoop() {
+    public static void printSmallerToBigger() {
 
         char fillChar = '+';
         char identChar = '\s';
 
-        int indentWidth = 0;
+        int indentWidth = 5;
         int triangleBaseLength = 11;
-        int fillWidth = triangleBaseLength;
-        int i = 0;
+        int fillWidth = 1;
+        int triangleHeight = 6;
 
-        while (i < triangleBaseLength) {
+        for (int i = 0; i < triangleHeight; i++) {
 
-            printIdentCharWhileLoop(identChar, indentWidth);
+            printIdentCharForLoop(identChar, indentWidth);
 
-            int j = 0;
-
-            while (j < fillWidth) {
+            for (int j = 0; j < fillWidth; j++) {
                 System.out.print(fillChar);
-                j++;
             }
-            printIdentCharWhileLoop(identChar, indentWidth);
+
+            printIdentCharForLoop(identChar, indentWidth);
 
             System.out.println();
-            indentWidth++;
-            fillWidth -= 2;
-            i++;
+            indentWidth--;
+            fillWidth += 2;
         }
     }
 
@@ -61,11 +59,4 @@ public class Rhombus {
         }
     }
 
-    private static void printIdentCharWhileLoop(char identChar, int indentWidth) {
-        int i = 0;
-        while (i < indentWidth) {
-            System.out.print(identChar);
-            i++;
-        }
-    }
 }
