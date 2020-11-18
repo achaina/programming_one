@@ -8,9 +8,11 @@ public class InvertFilter extends RGBImageFilter {
     public int filterRGB(int x, int y, int pixel) {
         RGBColor rgb = new RGBColor();
         rgb.getRGBFromPixel(pixel);
+
+        // (~pixel | (0xff << 24));
         // the tilde is inverting the bits in the colors
         int filteredPixel = ColorConverter.rgbPixelToInt(~rgb.getRed(), ~rgb.getGreen(), ~rgb.getBlue());
-
+r
         return filteredPixel;
     }
 }

@@ -13,6 +13,6 @@ public final class App {
      * @param args The arguments of the program.
      */
     public static void main(String[] args) {
-        BetterHourGlass.printAll(5, 3);
+        BetterHourGlass.printAllHorizontal(5, 3, 3);
     }
 }

@@ -16,7 +16,7 @@ public class ExampleWindow {
         Image srcImage2 = ResourceHelper.GetImageFromResourceFolderByName("fki_start.jpg");
         Image srcImage3 = ResourceHelper.GetImageFromResourceFolderByName("farbenkreis_b.gif");
 
-        var filterType = FilterType.BlackWhite;
+        var filterType = FilterType.Invert;
         ImageFilter colorfilter;
 
         Image filteredImage1;
@@ -31,11 +31,9 @@ public class ExampleWindow {
             filteredImage2 = toolkit.createImage(new FilteredImageSource(srcImage2.getSource(), colorfilter));
             filteredImage3 = toolkit.createImage(new FilteredImageSource(srcImage3.getSource(), colorfilter));
         } else {
-
             filteredImage1 = getFadingFilterImageWithImageSizeByName(srcImage1, "river.gif");
             filteredImage2 = getFadingFilterImageWithImageSizeByName(srcImage2, "fki_start.jpg");
             filteredImage3 = getFadingFilterImageWithImageSizeByName(srcImage3, "farbenkreis_b.gif");
-
         }
 
         JFrame frame = new JFrame("Images and pixelwise filtering");
