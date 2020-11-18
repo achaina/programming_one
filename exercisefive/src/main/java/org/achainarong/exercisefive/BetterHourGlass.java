@@ -1,6 +1,6 @@
 package org.achainarong.exercisefive;
 
-public class HourGlass {
+public class BetterHourGlass {
     public static void print() {
         printBiggerToSmaller();
         printSmallerToBigger();
@@ -35,9 +35,9 @@ public class HourGlass {
         char fillChar = '+';
         char identChar = '\s';
 
-        int indentWidth = 5;
-        int fillWidth = 1;
-        int triangleHeight = 6;
+        int indentWidth = 4;
+        int fillWidth = 3;
+        int triangleHeight = 5;
 
         for (int i = 0; i < triangleHeight; i++) {
 
@@ -50,6 +50,48 @@ public class HourGlass {
             System.out.println();
             indentWidth--;
             fillWidth += 2;
+        }
+    }
+
+    public static void printAll(int triangleHeight, int horizontalRepeats) {
+
+        char fillChar = '+';
+        char identChar = '\s';
+
+        for (int r = 0; r < horizontalRepeats; r++) {
+
+            int indentWidth = 0;
+            boolean passedMiddle = true;
+            int newTriangleHeight = triangleHeight * 2 - 1;
+            int triangleBaseLength = newTriangleHeight;
+            int fillWidth = triangleBaseLength;
+
+            for (int i = 0; i < newTriangleHeight; i++) {
+
+                printIdentCharForLoop(identChar, indentWidth);
+
+                printfillChar(fillChar, fillWidth);
+
+                printIdentCharForLoop(identChar, indentWidth);
+
+                System.out.println();
+                if (passedMiddle) {
+                    indentWidth++;
+                    fillWidth -= 2;
+                }
+
+                if (indentWidth == newTriangleHeight / 2 + 1) {
+                    indentWidth--;
+                    fillWidth += 2;
+                    passedMiddle = false;
+                }
+
+                if (passedMiddle == false) {
+                    indentWidth--;
+                    fillWidth += 2;
+                }
+
+            }
         }
     }
 

@@ -1,15 +1,15 @@
 package org.achainarong.exercisefive;
 
-public class HourGlass {
+public class EmptyHourGlass {
     public static void print() {
         printBiggerToSmaller();
         printSmallerToBigger();
     }
 
-    public static void printBiggerToSmaller() {
+    private static void printBiggerToSmaller() {
 
-        char fillChar = '+';
-        char identChar = '\s';
+        char fillChar = '\s';
+        char identChar = '+';
 
         int indentWidth = 0;
         int triangleBaseLength = 11;
@@ -30,14 +30,14 @@ public class HourGlass {
         }
     }
 
-    public static void printSmallerToBigger() {
+    private static void printSmallerToBigger() {
 
-        char fillChar = '+';
-        char identChar = '\s';
+        char fillChar = '\s';
+        char identChar = '+';
 
-        int indentWidth = 5;
-        int fillWidth = 1;
-        int triangleHeight = 6;
+        int indentWidth = 4;
+        int fillWidth = 3;
+        int triangleHeight = 5;
 
         for (int i = 0; i < triangleHeight; i++) {
 
