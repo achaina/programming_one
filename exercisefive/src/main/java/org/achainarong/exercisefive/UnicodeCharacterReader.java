@@ -7,24 +7,21 @@ public class UnicodeCharacterReader {
 
         int hexValue = 0;
 
-        for (int i = 5; i >= 0; i--) {
+        for (int i = 6; i > 0; i--) {
+            char tempChar = (char) System.in.read();
 
-            int tempInt = System.in.read();
-            char tempChar = (char) tempInt;
-
-            if (i == 5) {
+            if (i == 6) {
                 if (tempChar != '\\') {
                     throw new IllegalArgumentException("First character has to be \\");
                 }
-            } else if (i == 4) {
+            } else if (i == 5) {
                 if (!(tempChar == 'u' || tempChar == 'U')) {
 
                     throw new IllegalArgumentException("Second character has to be u!");
                 }
-            } else if (i < 4) {
-                double yolo = convertCharsToHexSystemValue(tempChar);
-                double lol = i + 1;
-                hexValue += Math.pow(yolo, lol) * yolo;
+            } else if (i < 5) {
+                int hexIntValue = convertCharsToHexSystemValue(tempChar);
+                hexValue += Math.pow(hexIntValue, i) * hexIntValue;
             } else {
                 throw new IllegalArgumentException();
             }
@@ -57,7 +54,7 @@ public class UnicodeCharacterReader {
             case 'e' -> 14;
             case 'F' -> 15;
             case 'f' -> 15;
-            default -> throw new IllegalArgumentException();
+            default -> throw new IllegalArgumentException("Hexadecimal character was expected");
         };
     }
 }
