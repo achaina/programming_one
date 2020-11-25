@@ -1,9 +1,11 @@
 package org.achainarong.exercisefour.ui;
 
 import java.awt.*;
+import java.io.Serializable;
+
 import javax.swing.*;
 
-public class ImagePanel extends JPanel {
+public class ImagePanel extends JPanel implements Serializable {
     private Image image;
 
     public ImagePanel(Image image) {

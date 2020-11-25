@@ -106,8 +106,8 @@ public class BetterHourGlass {
         }
     }
 
+    // warning because complexity of method is to hight
     public static void printAllHorizontal(int triangleHeight, int verticalRepeats, int horizontalRepeats) {
-
         char fillChar = '+';
         char identChar = '\s';
 
