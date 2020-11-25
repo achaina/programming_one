@@ -3,7 +3,7 @@ package org.achainarong.exercisefive;
 import java.io.IOException;
 
 public class UnicodeCharacterReader {
-    public static void doSomething() throws IOException {
+    public static void getCharacterFromUnicodeString() throws IOException {
 
         int hexValue = 0;
 
@@ -21,13 +21,15 @@ public class UnicodeCharacterReader {
                 }
             } else if (i < 5) {
                 int hexIntValue = convertCharsToHexSystemValue(tempChar);
-                hexValue += Math.pow(hexIntValue, i) * hexIntValue;
+                int bitsToShift = 4 * (i - 1);
+                hexValue = hexValue | (hexIntValue << bitsToShift);
             } else {
                 throw new IllegalArgumentException();
             }
         }
 
         System.out.println((char) hexValue);
+        System.out.println("intvalue: " + hexValue);
     }
 
     private static int convertCharsToHexSystemValue(char c) {
