@@ -27,11 +27,51 @@ public class CharArrayProcessing {
 
         var charArrayToWorkWith = new char[workingCharArrayMinLength];
 
+        // copy the array
         for (int j = 0; j < workingCharArrayMinLength; j++) {
             charArrayToWorkWith[j] = bufferCharArray[j];
         }
 
         return charArrayToWorkWith;
+    }
+
+    public void deleteCharAtX() throws IOException {
+        var charArrayToWorkWith = readInputAndReturnCharArray();
+        System.out.println("Geben Sie die Stelle (z.B 3) an, an der ein Character gelöscht werden soll");
+
+        char numberChar = (char) System.in.read();
+
+        int newCharArrayLenght;
+        int deleteCharAt = 0;
+
+        if (numberChar >= '1' && numberChar <= '9') {
+            deleteCharAt = (numberChar - '1');
+
+            if (deleteCharAt > charArrayToWorkWith.length) {
+                throw new IllegalArgumentException("The provided number was higher than the existing string");
+            }
+
+            newCharArrayLenght = charArrayToWorkWith.length - 1;
+        } else {
+            throw new IllegalArgumentException("Only number from 1 to 9 are allowed!");
+        }
+
+        char[] newCharray = new char[newCharArrayLenght];
+
+        int currentCharIndex = 0;
+
+        for (int i = 0; i < charArrayToWorkWith.length; i++) {
+            if (i == deleteCharAt) {
+                continue; // do nothing because we "delete" the char
+            }
+
+            newCharray[currentCharIndex] = charArrayToWorkWith[i];
+            currentCharIndex++;
+
+        }
+
+        System.out.println(newCharray);
+
     }
 
     public void exchangeCharactersByParameterInput() throws IOException {
