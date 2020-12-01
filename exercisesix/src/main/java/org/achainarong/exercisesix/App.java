@@ -16,8 +16,6 @@ public final class App {
      * @throws IOException
      */
     public static void main(String[] args) throws IOException {
-        var yolo = new CharArrayProcessing();
-
-        yolo.CheckIfCharrayContainsSubArray();
+        CharArrayOps.CheckIfCharrayContainsSubArray();
     }
 }

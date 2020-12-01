@@ -2,9 +2,9 @@ package org.achainarong.exercisesix;
 
 import java.io.IOException;
 
-public class CharArrayProcessing {
+public class CharArrayOps {
 
-    private char[] readInputAndReturnCharArray(String entryMessage) throws IOException {
+    private static char[] readInputAndReturnCharArray(String entryMessage) throws IOException {
         int bufferArrayLength = 4000;
         int workingCharArrayMinLength = 0;
 
@@ -35,8 +35,9 @@ public class CharArrayProcessing {
         return charArrayToWorkWith;
     }
 
-    public void deleteCharXFromArray() throws IOException {
-        var charArrayToWorkWith = readInputAndReturnCharArray("Geben Sie ihre Zeichen ein!");
+    public static void deleteCharXFromArray() throws IOException {
+        var charArrayToWorkWith = readInputAndReturnCharArray(
+                "Geben Sie ihre Zeichen ein um dann anzugeben welches Zeichen sie dort entfernen möchten!");
         System.out.println("Geben Sie das Zeichen an welche gelöscht werden soll!");
 
         char charToDelete = (char) System.in.read();
@@ -62,9 +63,10 @@ public class CharArrayProcessing {
         System.out.println(newCharArray);
     }
 
-    public void CheckIfCharrayContainsSubArray() throws IOException {
+    public static void CheckIfCharrayContainsSubArray() throws IOException {
         var mainCharArray = readInputAndReturnCharArray("Geben Sie ihr MainCharArray ein!");
-        var subCharArray = readInputAndReturnCharArray("Geben Sie ihr SubCharArray ein!");
+        var subCharArray = readInputAndReturnCharArray(
+                "Geben Sie ihr SubCharArray ein, welcher im MainCharArray gesucht wird!");
         boolean substringFound = false;
         for (int j = 0; j < mainCharArray.length; j++) {
 
@@ -73,7 +75,7 @@ public class CharArrayProcessing {
             }
 
             if (j - subCharArray.length > mainCharArray.length) {
-                throw new IllegalArgumentException("Mainchararray does not contain subchararray");
+                throw new IllegalArgumentException("Mainchararray beinhaltet nicht das subchararray");
             }
 
             int currentIndex = j;
@@ -81,10 +83,9 @@ public class CharArrayProcessing {
             for (int i = 0; i < subCharArray.length; i++) {
                 if (mainCharArray[currentIndex] == subCharArray[i]) {
                     if ((subCharArray.length - 1) == i) {
-                        int lastPosition = currentIndex + subCharArray.length;
+                        int lastPosition = i + subCharArray.length - 1;
 
-                        System.out.print(
-                                "An der Stelle " + currentIndex + " bis " + lastPosition + " ist der substring ");
+                        System.out.print("An der Stelle " + i + " bis " + lastPosition + " ist der substring ");
                         System.out.print(subCharArray);
 
                         substringFound = true;
@@ -98,7 +99,7 @@ public class CharArrayProcessing {
 
     }
 
-    public void setCharAtX() throws IOException {
+    public static void setCharAtX() throws IOException {
         var charArrayToWorkWith = readInputAndReturnCharArray("Geben Sie ihre Zeichen ein!");
         ;
         System.out.println(
@@ -128,7 +129,7 @@ public class CharArrayProcessing {
 
     }
 
-    public void deleteCharAtX() throws IOException {
+    public static void deleteCharAtX() throws IOException {
         var charArrayToWorkWith = readInputAndReturnCharArray("Geben Sie ihre Zeichen ein!");
         System.out.println("Geben Sie die Stelle (z.B 3) an, an der ein Character gelöscht werden soll");
 
@@ -166,7 +167,7 @@ public class CharArrayProcessing {
 
     }
 
-    public void exchangeCharactersByParameterInput() throws IOException {
+    public static void exchangeCharactersByParameterInput() throws IOException {
 
         var charArrayToWorkWith = readInputAndReturnCharArray("Geben Sie ihre Zeichen ein!");
 
