@@ -4,7 +4,7 @@ import java.io.IOException;
 
 public class CharArrayOps {
 
-    private static char[] readInputAndReturnCharArray(String entryMessage) throws IOException {
+    public static char[] readInputAndReturnCharArray(String entryMessage) throws IOException {
         int bufferArrayLength = 4000;
         int workingCharArrayMinLength = 0;
 
@@ -35,13 +35,7 @@ public class CharArrayOps {
         return charArrayToWorkWith;
     }
 
-    public static void deleteCharXFromArray() throws IOException {
-        var charArrayToWorkWith = readInputAndReturnCharArray(
-                "Geben Sie ihre Zeichen ein um dann anzugeben welches Zeichen sie dort entfernen möchten!");
-        System.out.println("Geben Sie das Zeichen an welche gelöscht werden soll!");
-
-        char charToDelete = (char) System.in.read();
-
+    public static char[] deleteCharXFromArray(char[] charArrayToWorkWith, char charToDelete) throws IOException {
         int newArrayLength = 0;
         for (int i = 0; i < charArrayToWorkWith.length; i++) {
             if (charArrayToWorkWith[i] != charToDelete) {
@@ -60,20 +54,11 @@ public class CharArrayOps {
             }
         }
 
-        System.out.println(newCharArray);
+        return newCharArray;
     }
 
-    public static void CheckIfCharrayContainsSubArray() throws IOException {
-        var mainCharArray = readInputAndReturnCharArray("Geben Sie ihr MainCharArray ein!");
-        var subCharArray = readInputAndReturnCharArray(
-                "Geben Sie ihr SubCharArray ein, welcher im MainCharArray gesucht wird!");
-        boolean substringFound = false;
+    public static int CheckIfCharrayContainsSubArray(char[] mainCharArray, char[] subCharArray) throws IOException {
         for (int j = 0; j < mainCharArray.length; j++) {
-
-            if (substringFound) {
-                break;
-            }
-
             if (j - subCharArray.length > mainCharArray.length) {
                 throw new IllegalArgumentException("Mainchararray beinhaltet nicht das subchararray");
             }
@@ -83,29 +68,19 @@ public class CharArrayOps {
             for (int i = 0; i < subCharArray.length; i++) {
                 if (mainCharArray[currentIndex] == subCharArray[i]) {
                     if ((subCharArray.length - 1) == i) {
-                        int lastPosition = i + subCharArray.length - 1;
 
-                        System.out.print("An der Stelle " + i + " bis " + lastPosition + " ist der substring ");
-                        System.out.print(subCharArray);
-
-                        substringFound = true;
+                        return i; // returns the first position of the found substring
                     }
                     currentIndex++;
                 } else {
-                    break;
+                    return -1;
                 }
             }
         }
 
     }
 
-    public static void setCharAtX() throws IOException {
-        var charArrayToWorkWith = readInputAndReturnCharArray("Geben Sie ihre Zeichen ein!");
-        ;
-        System.out.println(
-                "Geben Sie die Stelle (z.B 3) an, an der ein Character mit einem Bindestrich ersetzt werden soll");
-
-        char numberChar = (char) System.in.read();
+    public static char[] setCharAtX(char[] charArrayToWorkWith, char numberChar) throws IOException {
 
         int changeCharAt = 0;
 
@@ -124,17 +99,10 @@ public class CharArrayOps {
                 charArrayToWorkWith[i] = '-'; // do nothing because we "delete" the char
             }
         }
-
-        System.out.println(charArrayToWorkWith);
-
+        return charArrayToWorkWith;
     }
 
-    public static void deleteCharAtX() throws IOException {
-        var charArrayToWorkWith = readInputAndReturnCharArray("Geben Sie ihre Zeichen ein!");
-        System.out.println("Geben Sie die Stelle (z.B 3) an, an der ein Character gelöscht werden soll");
-
-        char numberChar = (char) System.in.read();
-
+    public static char[] deleteCharAtX(char[] charArrayToWorkWith, char numberChar) throws IOException {
         int newCharArrayLenght;
         int deleteCharAt = 0;
 
@@ -150,7 +118,7 @@ public class CharArrayOps {
             throw new IllegalArgumentException("Only number from 1 to 9 are allowed!");
         }
 
-        char[] newCharray = new char[newCharArrayLenght];
+        char[] newCharArray = new char[newCharArrayLenght];
 
         int currentCharIndex = 0;
 
@@ -159,49 +127,16 @@ public class CharArrayOps {
                 continue; // do nothing because we "delete" the char
             }
 
-            newCharray[currentCharIndex] = charArrayToWorkWith[i];
+            newCharArray[currentCharIndex] = charArrayToWorkWith[i];
             currentCharIndex++;
         }
 
-        System.out.println(newCharray);
+        return newCharArray;
 
     }
 
-    public static void exchangeCharactersByParameterInput() throws IOException {
-
-        var charArrayToWorkWith = readInputAndReturnCharArray("Geben Sie ihre Zeichen ein!");
-
-        System.out.println(" Geben Sie nun die Buchstaben an die vertauscht werden sollen in dieser Form a->b!");
-
-        char charToReplace = ' ';
-        char replacingChar = ' ';
-
-        for (int k = 0; k < 4; k++) {
-            char paramChar = (char) System.in.read();
-
-            if (k == 0) {
-                if (paramChar >= 'a' && paramChar <= 'z') {
-                    charToReplace = paramChar;
-                } else {
-                    throw new IllegalArgumentException("Nur a-z sind als Eingabe auf der ersten Zeile erlaubt!");
-                }
-            } else if (k == 1) {
-                if (paramChar != '-') {
-                    throw new IllegalArgumentException("Nur - ist als Eingabe auf der zweiten Zeile erlaubt!");
-                }
-            } else if (k == 2) {
-                if (paramChar != '>') {
-
-                    throw new IllegalArgumentException("Nur > ist als Eingabe auf der dritten ten Zeile erlaubt!");
-                }
-            } else if (k == 3) {
-                if (paramChar >= 'a' && paramChar <= 'z') {
-                    replacingChar = paramChar;
-                } else {
-                    throw new IllegalArgumentException("Nur a-z sind als Eingabe auf der letzten Zeile erlaubt!");
-                }
-            }
-        }
+    public static char[] exchangeCharactersByParameterInput(char[] charArrayToWorkWith, char charToReplace,
+            char replacingChar) throws IOException {
 
         for (int j = 0; j < charArrayToWorkWith.length; j++) {
             if (charArrayToWorkWith[j] == charToReplace) {
@@ -209,7 +144,6 @@ public class CharArrayOps {
             }
         }
 
-        System.out.println("Die Charaktere wurden ersetzt");
-        System.out.println(charArrayToWorkWith);
+        return charArrayToWorkWith;
     }
 }
