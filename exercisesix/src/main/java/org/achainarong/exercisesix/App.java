@@ -16,6 +16,6 @@ public final class App {
      * @throws IOException
      */
     public static void main(String[] args) throws IOException {
-        CharArrayOps.CheckIfCharrayContainsSubArray();
+        // CharArrayOps.CheckIfCharrayContainsSubArray();
     }
 }

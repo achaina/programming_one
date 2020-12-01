@@ -58,9 +58,13 @@ public class CharArrayOps {
     }
 
     public static int CheckIfCharrayContainsSubArray(char[] mainCharArray, char[] subCharArray) throws IOException {
+        if (mainCharArray.length < subCharArray.length) {
+            return -1;
+        }
+
         for (int j = 0; j < mainCharArray.length; j++) {
-            if (j - subCharArray.length > mainCharArray.length) {
-                throw new IllegalArgumentException("Mainchararray beinhaltet nicht das subchararray");
+            if (j + subCharArray.length > mainCharArray.length) {
+                return -1;
             }
 
             int currentIndex = j;
@@ -72,12 +76,10 @@ public class CharArrayOps {
                         return i; // returns the first position of the found substring
                     }
                     currentIndex++;
-                } else {
-                    return -1;
                 }
             }
         }
-
+        return -1;
     }
 
     public static char[] setCharAtX(char[] charArrayToWorkWith, char numberChar) throws IOException {
