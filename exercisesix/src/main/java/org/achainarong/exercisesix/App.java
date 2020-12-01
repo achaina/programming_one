@@ -18,6 +18,6 @@ public final class App {
     public static void main(String[] args) throws IOException {
         var yolo = new CharArrayProcessing();
 
-        yolo.deleteCharAtX();
+        yolo.deleteCharXFromArray();
     }
 }

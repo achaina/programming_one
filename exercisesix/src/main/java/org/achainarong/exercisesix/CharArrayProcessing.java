@@ -35,6 +35,33 @@ public class CharArrayProcessing {
         return charArrayToWorkWith;
     }
 
+    public void deleteCharXFromArray() throws IOException {
+        var charArrayToWorkWith = readInputAndReturnCharArray();
+        System.out.println("Geben Sie das Zeichen an welche gelöscht werden soll!");
+
+        char charToDelete = (char) System.in.read();
+
+        int newArrayLength = 0;
+        for (int i = 0; i < charArrayToWorkWith.length; i++) {
+            if (charArrayToWorkWith[i] != charToDelete) {
+                newArrayLength++;
+            }
+        }
+
+        var newCharArray = new char[newArrayLength];
+
+        int charArrayCurrentIndex = 0;
+
+        for (int i = 0; i < charArrayToWorkWith.length; i++) {
+            if (charArrayToWorkWith[i] != charToDelete) {
+                newCharArray[charArrayCurrentIndex] = charArrayToWorkWith[i];
+                charArrayCurrentIndex++;
+            }
+        }
+
+        System.out.println(newCharArray);
+    }
+
     public void deleteCharAtX() throws IOException {
         var charArrayToWorkWith = readInputAndReturnCharArray();
         System.out.println("Geben Sie die Stelle (z.B 3) an, an der ein Character gelöscht werden soll");
@@ -67,7 +94,6 @@ public class CharArrayProcessing {
 
             newCharray[currentCharIndex] = charArrayToWorkWith[i];
             currentCharIndex++;
-
         }
 
         System.out.println(newCharray);
