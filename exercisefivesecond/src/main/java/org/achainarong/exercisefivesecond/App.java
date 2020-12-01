@@ -14,6 +14,6 @@ public final class App {
      */
     public static void main(String[] args) throws Exception {
         // System.out.println(Integer.toHexString(Integer.MIN_VALUE));
-        HexaLiteraldReader.readHexadecimalString(args);
+        LiteralRead.readLiteral(args);
     }
 }

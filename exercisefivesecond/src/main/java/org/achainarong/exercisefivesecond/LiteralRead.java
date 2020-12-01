@@ -10,11 +10,16 @@ public class LiteralRead {
         final int STATE_WRONG = 3;
         final int STATE_COMPL = 4;
         final int STATE_CLEAR = 5;
+        final int STATE_CHECKHEX = 6;
+        final int STATE_HEX = 7;
 
         int currentState = STATE_INITIAL;
         int column = 0;
         int sign = 1;
         int value = 0;
+        int hexRepeats = 0;
+
+        boolean firstEntryIsZero = false;
 
         System.out.println("enter decimal literal");
         while (true) {
@@ -28,6 +33,7 @@ public class LiteralRead {
                     value = 0;
                     sign = 1;
                     column = 1;
+                    hexRepeats = 0;
 
                     // exits the program
                     if ((c == 'q') || (c == 'Q')) {
@@ -43,7 +49,11 @@ public class LiteralRead {
                         // which is strictly speaking not right for column 1.
                         // But this is the right hook for
                         // your extension concerning hex and oct literals, both starting with 0
-                        currentState = STATE_DEC;
+
+                        if (currentState == STATE_INITIAL) {
+
+                            currentState = STATE_CHECKHEX;
+                        }
                     } else if ((c == '+') || (c == '-'))
                         currentState = STATE_SIGN;
                     else if ((c == '\r') || (c == '\n'))
@@ -63,6 +73,25 @@ public class LiteralRead {
                         currentState = STATE_WRONG;
                     break;
 
+                case (STATE_CHECKHEX):
+
+                    if ('0' <= c && c <= '9') {
+                        currentState = STATE_DEC;
+                    } else if (c == 'x') {
+                        currentState = STATE_HEX;
+                    } else {
+                        currentState = STATE_WRONG;
+                    }
+                    break;
+                case (STATE_HEX):
+                    if (('0' <= c && c <= '9') || ('a' <= c && c <= 'f') || ('A' <= c && c <= 'F')) {
+                        // do nothing
+                        ;
+                    } else if ((c == '\r') || (c == '\n'))
+                        currentState = STATE_COMPL;
+                    else
+                        currentState = STATE_WRONG;
+                    break;
                 // when new line is detected the reading of the value finishes and the state
                 // changes to complete
                 case (STATE_DEC):
@@ -106,15 +135,34 @@ public class LiteralRead {
 
                 // hack to get the int value from the character
                 cipherValue = c - '0';
-            else if (c == '-')
+            else if ('a' <= c && c <= 'f') {
+                cipherValue = c - 'a' + 10;
+            } else if ('A' <= c && c <= 'F') {
+                cipherValue = c - 'A' + 10;
+            } else if (c == '-')
                 // default value of sign is 1
                 sign = -1;
 
             // apply Horner
             switch (currentState) {
+                case (STATE_HEX):
+
+                    if (hexRepeats < 9) {
+                        value = value << 4 | cipherValue;
+                    } else {
+                        System.out
+                                .println("Zahl zu gross nur Zahlen mit weniger als 9 Hexdezimalstellen sind erlaubt!");
+                        currentState = STATE_CLEAR;
+                    }
+
+                    hexRepeats++;
+                    break;
                 case (STATE_DEC):
                     // Kontrollfrage: Warum die Fallunterscheidung fuer neg. bzw. pos. Vorzeichen
                     // und nicht einfach zum Schluss sign * errechneter Betrag ?
+                    // Das sign wird benutzt um zu ermitteln ob man zur Berechnung den maximale oder
+                    // minimale Integer Wert braucht um zu ermitteln ob die zahl zu klein oder zu
+                    // große ist,
                     if (sign > 0)
                         if ((Integer.MAX_VALUE - cipherValue) / 10 >= value)
                             value = value * 10 + cipherValue;

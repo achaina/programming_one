@@ -16,10 +16,8 @@ public final class App {
      * @throws IOException
      */
     public static void main(String[] args) throws IOException {
-        // BetterHourGlass.printAllHorizontal(5, 3, 3);
-        // int i = Integer.MAX_VALUE;
-        // System.out.println(i++ - Integer.MAX_VALUE);
+        BetterHourGlass.printAllHorizontal(5, 3, 3);
 
-        UnicodeCharacterReader.doSomething();
+        // UnicodeCharacterReader.getCharacterFromUnicodeString();
     }
 }

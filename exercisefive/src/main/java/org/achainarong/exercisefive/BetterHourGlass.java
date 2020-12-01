@@ -115,7 +115,7 @@ public class BetterHourGlass {
 
             int indentWidth = 0;
 
-            boolean passedMiddle = true;
+            boolean hasNotPassedMiddle = true;
             boolean firstRun = true;
 
             int newTriangleHeight = triangleHeight * 2 - 1;
@@ -133,8 +133,10 @@ public class BetterHourGlass {
 
                     printIdentCharForLoop(identChar, indentWidth);
                 }
+
                 System.out.println();
-                if (passedMiddle) {
+
+                if (hasNotPassedMiddle) {
                     indentWidth++;
                     fillWidth -= 2;
                 }
@@ -142,10 +144,10 @@ public class BetterHourGlass {
                 if (indentWidth == newTriangleHeight / 2 + 1) {
                     indentWidth--;
                     fillWidth += 2;
-                    passedMiddle = false;
+                    hasNotPassedMiddle = false;
                 }
 
-                if (passedMiddle == false) {
+                if (hasNotPassedMiddle == false) {
                     indentWidth--;
                     fillWidth += 2;
                 }

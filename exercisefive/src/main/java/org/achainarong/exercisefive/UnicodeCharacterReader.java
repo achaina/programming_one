@@ -16,7 +16,6 @@ public class UnicodeCharacterReader {
                 }
             } else if (i == 5) {
                 if (!(tempChar == 'u' || tempChar == 'U')) {
-
                     throw new IllegalArgumentException("Second character has to be u!");
                 }
             } else if (i < 5) {
@@ -56,7 +55,7 @@ public class UnicodeCharacterReader {
             case 'e' -> 14;
             case 'F' -> 15;
             case 'f' -> 15;
-            default -> throw new IllegalArgumentException("Hexadecimal character was expected");
+            default -> throw new IllegalArgumentException("Hexadecimal character was expected " + c);
         };
     }
 }
