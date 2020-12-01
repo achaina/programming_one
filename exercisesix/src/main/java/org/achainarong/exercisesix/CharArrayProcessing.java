@@ -4,13 +4,13 @@ import java.io.IOException;
 
 public class CharArrayProcessing {
 
-    private char[] readInputAndReturnCharArray() throws IOException {
+    private char[] readInputAndReturnCharArray(String entryMessage) throws IOException {
         int bufferArrayLength = 4000;
         int workingCharArrayMinLength = 0;
 
         var bufferCharArray = new char[bufferArrayLength];
 
-        System.out.println("Geben Sie ihre Zeichen ein!");
+        System.out.println(entryMessage);
 
         for (int i = 0; i < bufferArrayLength; i++) {
             char currentChar = (char) System.in.read();
@@ -36,7 +36,7 @@ public class CharArrayProcessing {
     }
 
     public void deleteCharXFromArray() throws IOException {
-        var charArrayToWorkWith = readInputAndReturnCharArray();
+        var charArrayToWorkWith = readInputAndReturnCharArray("Geben Sie ihre Zeichen ein!");
         System.out.println("Geben Sie das Zeichen an welche gelöscht werden soll!");
 
         char charToDelete = (char) System.in.read();
@@ -62,8 +62,74 @@ public class CharArrayProcessing {
         System.out.println(newCharArray);
     }
 
+    public void CheckIfCharrayContainsSubArray() throws IOException {
+        var mainCharArray = readInputAndReturnCharArray("Geben Sie ihr MainCharArray ein!");
+        var subCharArray = readInputAndReturnCharArray("Geben Sie ihr SubCharArray ein!");
+        boolean substringFound = false;
+        for (int j = 0; j < mainCharArray.length; j++) {
+
+            if (substringFound) {
+                break;
+            }
+
+            if (j - subCharArray.length > mainCharArray.length) {
+                throw new IllegalArgumentException("Mainchararray does not contain subchararray");
+            }
+
+            int currentIndex = j;
+
+            for (int i = 0; i < subCharArray.length; i++) {
+                if (mainCharArray[currentIndex] == subCharArray[i]) {
+                    if ((subCharArray.length - 1) == i) {
+                        int lastPosition = currentIndex + subCharArray.length;
+
+                        System.out.print(
+                                "An der Stelle " + currentIndex + " bis " + lastPosition + " ist der substring ");
+                        System.out.print(subCharArray);
+
+                        substringFound = true;
+                    }
+                    currentIndex++;
+                } else {
+                    break;
+                }
+            }
+        }
+
+    }
+
+    public void setCharAtX() throws IOException {
+        var charArrayToWorkWith = readInputAndReturnCharArray("Geben Sie ihre Zeichen ein!");
+        ;
+        System.out.println(
+                "Geben Sie die Stelle (z.B 3) an, an der ein Character mit einem Bindestrich ersetzt werden soll");
+
+        char numberChar = (char) System.in.read();
+
+        int changeCharAt = 0;
+
+        if (numberChar >= '1' && numberChar <= '9') {
+            changeCharAt = (numberChar - '1');
+
+            if (changeCharAt > charArrayToWorkWith.length) {
+                throw new IllegalArgumentException("The provided number was higher than the existing string");
+            }
+        } else {
+            throw new IllegalArgumentException("Only number from 1 to 9 are allowed!");
+        }
+
+        for (int i = 0; i < charArrayToWorkWith.length; i++) {
+            if (i == changeCharAt) {
+                charArrayToWorkWith[i] = '-'; // do nothing because we "delete" the char
+            }
+        }
+
+        System.out.println(charArrayToWorkWith);
+
+    }
+
     public void deleteCharAtX() throws IOException {
-        var charArrayToWorkWith = readInputAndReturnCharArray();
+        var charArrayToWorkWith = readInputAndReturnCharArray("Geben Sie ihre Zeichen ein!");
         System.out.println("Geben Sie die Stelle (z.B 3) an, an der ein Character gelöscht werden soll");
 
         char numberChar = (char) System.in.read();
@@ -102,7 +168,7 @@ public class CharArrayProcessing {
 
     public void exchangeCharactersByParameterInput() throws IOException {
 
-        var charArrayToWorkWith = readInputAndReturnCharArray();
+        var charArrayToWorkWith = readInputAndReturnCharArray("Geben Sie ihre Zeichen ein!");
 
         System.out.println(" Geben Sie nun die Buchstaben an die vertauscht werden sollen in dieser Form a->b!");
 
