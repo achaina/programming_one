@@ -18,7 +18,7 @@ public class CharArrayOps {
             if (currentChar == '\r' || currentChar == '\n') {
                 break;
             } else if (currentChar == '\s') {
-                continue; // do nothingc
+                continue; // do nothing
             }
 
             bufferCharArray[i] = currentChar;
@@ -33,6 +33,13 @@ public class CharArrayOps {
         }
 
         return charArrayToWorkWith;
+    }
+
+    public static void consoleOutCharArray(char[] charArray) {
+        for (char c : charArray) {
+            System.out.print(c);
+        }
+        // System.out.print('\r');
     }
 
     public static char[] deleteCharXFromArray(char[] charArrayToWorkWith, char charToDelete) throws IOException {
