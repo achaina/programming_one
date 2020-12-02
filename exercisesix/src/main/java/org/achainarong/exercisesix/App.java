@@ -16,6 +16,13 @@ public final class App {
      * @throws IOException
      */
     public static void main(String[] args) throws IOException {
-        // CharArrayOps.CheckIfCharrayContainsSubArray();
+        var charArray = "Ich bin ein String der in ein CharArray umgewandelt werden".toCharArray();
+
+        charArray = HideInfo.ExchangeEWithIAndAWithU(charArray);
+        charArray = HideInfo.exchangeOWithI(charArray);
+        charArray = HideInfo.putCharInBetween(charArray);
+        charArray = HideInfo.putSecretCharInBetween(charArray);
+        charArray = HideInfo.deleteAllVocals(charArray);
+        System.out.println(charArray);
     }
 }

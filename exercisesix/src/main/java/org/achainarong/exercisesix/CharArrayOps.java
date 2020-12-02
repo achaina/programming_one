@@ -104,6 +104,56 @@ public class CharArrayOps {
         return charArrayToWorkWith;
     }
 
+    public static char[] setCharAtEveryPositionX(char[] charArrayToWorkWith, int position, char placeHolderChar)
+            throws IOException {
+
+        var newCharArray = new char[charArrayToWorkWith.length + charArrayToWorkWith.length / position];
+
+        if (position >= 1 && position <= 9) {
+            ; // do nothing
+        } else {
+            throw new IllegalArgumentException("Only number from 1 to 9 are allowed!");
+        }
+        int currentChar = 0;
+        for (int i = 0; i < newCharArray.length; i++) {
+            if (i % position == 1) {
+                newCharArray[i] = placeHolderChar;
+            } else {
+                newCharArray[i] = charArrayToWorkWith[currentChar];
+                currentChar++;
+            }
+        }
+        return newCharArray;
+    }
+
+    public static char[] setCharAtEveryPositionXWithSecret(char[] charArrayToWorkWith, int position)
+            throws IOException {
+
+        var newCharArray = new char[charArrayToWorkWith.length + charArrayToWorkWith.length / position];
+
+        if (position >= 1 && position <= 9) {
+            ; // do nothing
+        } else {
+            throw new IllegalArgumentException("Only number from 1 to 9 are allowed!");
+        }
+        int currentChar = 0;
+        for (int i = 0; i < newCharArray.length; i++) {
+            if (i % position == 1) {
+                newCharArray[i] = getSecretChar();
+            } else {
+                newCharArray[i] = charArrayToWorkWith[currentChar];
+                currentChar++;
+            }
+        }
+        return newCharArray;
+    }
+
+    private static char getSecretChar() {
+        var secretCharArray = new char[] { 's', 'e', 'c', 'r', 'e', 't' };
+        int randomPosition = (int) (Math.random() * secretCharArray.length);
+        return secretCharArray[randomPosition];
+    }
+
     public static char[] deleteCharAtX(char[] charArrayToWorkWith, char numberChar) throws IOException {
         int newCharArrayLenght;
         int deleteCharAt = 0;
@@ -144,6 +194,35 @@ public class CharArrayOps {
             if (charArrayToWorkWith[j] == charToReplace) {
                 charArrayToWorkWith[j] = replacingChar; // exchangign the characters
             }
+        }
+
+        return charArrayToWorkWith;
+    }
+
+    public static char[] exchangeCharactersTwoChars(char[] charArrayToWorkWith, char firstChar, char secondChar)
+            throws IOException {
+
+        int firstCharArrayLength = 0;
+        int secondCharArrayLength = 0;
+
+        for (int j = 0; j < charArrayToWorkWith.length; j++) {
+            if (charArrayToWorkWith[j] == firstChar) {
+                firstCharArrayLength++;
+            }
+            if (charArrayToWorkWith[j] == secondChar) {
+                secondCharArrayLength++;
+            }
+        }
+
+        int[] firstCharPositions = new int[firstCharArrayLength];
+        int[] secondCharPositions = new int[secondCharArrayLength];
+
+        for (int i : firstCharPositions) {
+            charArrayToWorkWith[i] = secondChar;
+        }
+
+        for (int i : secondCharPositions) {
+            charArrayToWorkWith[i] = firstChar;
         }
 
         return charArrayToWorkWith;
