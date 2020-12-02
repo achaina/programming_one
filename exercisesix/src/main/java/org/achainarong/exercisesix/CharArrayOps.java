@@ -140,7 +140,6 @@ public class CharArrayOps {
         for (int i = 1; i <= newCharArray.length; i++) {
             if (i % position == 0) {
                 newCharArray[i - 1] = getSecretChar();
-                counter++;
             } else {
                 newCharArray[i - 1] = charArrayToWorkWith[currentChar];
                 currentChar++;
