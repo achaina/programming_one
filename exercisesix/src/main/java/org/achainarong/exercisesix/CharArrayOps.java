@@ -137,14 +137,16 @@ public class CharArrayOps {
             throw new IllegalArgumentException("Only number from 1 to 9 are allowed!");
         }
         int currentChar = 0;
-        for (int i = 0; i < newCharArray.length; i++) {
-            if (i % position == 1) {
-                newCharArray[i] = getSecretChar();
+        for (int i = 1; i <= newCharArray.length; i++) {
+            if (i % position == 0) {
+                newCharArray[i - 1] = getSecretChar();
+                counter++;
             } else {
-                newCharArray[i] = charArrayToWorkWith[currentChar];
+                newCharArray[i - 1] = charArrayToWorkWith[currentChar];
                 currentChar++;
             }
         }
+
         return newCharArray;
     }
 

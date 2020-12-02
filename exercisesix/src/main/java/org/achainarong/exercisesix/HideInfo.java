@@ -21,7 +21,7 @@ public class HideInfo {
     }
 
     public static char[] putSecretCharInBetween(char[] charArray) throws IOException {
-        int position = 3;
+        int position = 2;
         return CharArrayOps.setCharAtEveryPositionXWithSecret(charArray, position);
     }
 
@@ -36,5 +36,21 @@ public class HideInfo {
 
     public static char[] exchangeOWithI(char[] charArray) throws IOException {
         return CharArrayOps.exchangeCharactersByParameterInput(charArray, 'o', 'i');
+    }
+
+    public static char[] doExercise(char[] charArray) throws IOException {
+        // var charArray = "Ich bin ein String der in ein CharArray umgewandelt
+        // werden".toCharArray();
+
+        // passing a char should be call by reference
+        // it is not actually needed to return the chararray because it was allready
+        // manipulated with in th method
+
+        charArray = HideInfo.ExchangeEWithIAndAWithU(charArray);
+        charArray = HideInfo.exchangeOWithI(charArray);
+        charArray = HideInfo.putCharInBetween(charArray);
+        charArray = HideInfo.putSecretCharInBetween(charArray);
+        charArray = HideInfo.deleteAllVocals(charArray);
+        return charArray;
     }
 }

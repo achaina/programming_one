@@ -16,13 +16,6 @@ public final class App {
      * @throws IOException
      */
     public static void main(String[] args) throws IOException {
-        var charArray = "Ich bin ein String der in ein CharArray umgewandelt werden".toCharArray();
-
-        charArray = HideInfo.ExchangeEWithIAndAWithU(charArray);
-        charArray = HideInfo.exchangeOWithI(charArray);
-        charArray = HideInfo.putCharInBetween(charArray);
-        charArray = HideInfo.putSecretCharInBetween(charArray);
-        charArray = HideInfo.deleteAllVocals(charArray);
-        System.out.println(charArray);
+        System.out.println(HideInfo.doExercise("Ich bin ein Test String o ä ü ö".toCharArray()));
     }
 }
