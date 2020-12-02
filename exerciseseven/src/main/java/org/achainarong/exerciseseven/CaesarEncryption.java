@@ -17,7 +17,7 @@ public class CaesarEncryption {
 
             if (currentChar + pos > endChar) {
 
-                char shiftlength = (char) (endChar - startChar);
+                char shiftlength = (char) (endChar - startChar + 1);
                 char newChar = (char) ((currentChar + pos) - shiftlength);
                 charArray[i] = newChar;
             } else {
