@@ -13,7 +13,10 @@ public final class App {
      * @param args The arguments of the program.
      */
     public static void main(String[] args) {
-        var newCharArray = CaesarEncryption.shiftCharArrayByPosition("abcdefyz".toCharArray(), 2);
+        // var newCharArray =
+        // CaesarEncryption.shiftCharArrayByPosition("abcdefyz".toCharArray(), 2);
+
+        var newCharArray = CaesarEncryption.vigenereEncryption("zzz".toCharArray(), "abc".toCharArray());
         System.out.println(newCharArray);
     }
 }
